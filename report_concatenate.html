@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Report Concatenation</title>
+        <meta charset="UTF-8"> 
+        <style>
+            .boxA {
+                display: inline-block;
+                width: 350px;
+                min-height: 160px;
+                border: 1px solid black;
+                vertical-align: top;
+                border-radius: 3px;
+                text-align: center;
+                padding: 2px;
+            }
+            .header {
+                font-family: Tahoma, Arial, Verdana;
+                color: black;
+                font-size: 16pt;
+                font-style: bold;
+            }
+            p {
+                font-family: Tahoma, Arial, Verdana;
+                color: black;
+                font-size: 10pt;
+            }
+            hr {
+                width: 50%;
+                margin: auto;
+                border: 1px solid #A5A5A5;
+            }
+            .errorText {
+                font-family: Tahoma, Arial, Verdana;
+                color: black;
+                font-size: 10pt;
+                font-style: bold;
+                background-color: #EEDD32;
+                border-radius: 3px;
+                border: 1px solid black;
+                padding: 3px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div style="text-align: center">
+                <h1 class="header">Report Concatenation</h1>
+                <div id="files" class="boxA">
+                    <p>Select the report files to process:</p>
+                    <input id="filesSelect" type="file" multiple></input>
+                </div>
+                <div class="boxA">
+                    <p>Enter report index ID:</p>
+                    <input id="indexIdField" type="text" value="ABC113R1"></input>
+                    <p>Click button when ready to process:</p>
+                    <button id="filesProcess">Process Files</button>
+                </div>
+            </div>
+            <div id="errors" style="max-width: 50%; margin: auto; text-align: center">
+                <ul id="errorList"></ul>
+            </div>
+            <br>
+            <hr>
+            <p style="text-align: center">Processed records will appear below.</p>
+            <br>
+            <div style="text-align: center">
+                <textarea id="fileOutput" style="width: 80%" rows="25" readonly></textarea>
+            </div>
+            <br>
+            <div id="summary" style="max-width: 50%; margin: auto; text-align: center"></div>
+        </div>
+    </body>
+
+    <script>
+        var files = [];
+        var filesArray = [];
+        var indexId = "";
+        var error = "";
+
+        function fileList(selectedFiles) {
+            files = selectedFiles.target.files;  // Contains array of file references to storage
+        }
+
+        function handleFiles() {
+            if (files.length < 1) {
+                error = `No files selected!`;
+                errorHandler();
+                return;
+            }
+            indexId = document.getElementById("indexIdField").value;
+            if (indexId.length < 1) {
+                error = `No index ID value has been provided!`;
+                errorHandler();
+                return;
+            }
+            let detailrecords = [];
+            for (let i = 0; i < files.length; i++) {  // Loop through array of file objects
+
+                let reader = new FileReader();
+                
+                reader.onloadend = (function(event) { // Grab report header data and create object for each file
+                    const textTemp = event.target.result;
+                    const startOffset = textTemp.indexOf(indexId);
+                    if (startOffset == "-1" || !startOffset) {
+                        error = `Report designator not found in ${files[i].name}!`;
+                        errorHandler();
+                        return;
+                    }
+                    const reportDate = textTemp.substr(startOffset + 91, 8); // Get report date
+                    const reportBIN = textTemp.substr(startOffset + 255, 9).trim(); // Get report BIN, trim off trailing spaces if present
+                    const recordCount = (textTemp.match((/\n\s{17}\d{7}\s/g) || []).length);  // This line is for processing plain text files
+                    const detailRecords = processRecords(recordCount, textTemp); // Call function to extract detail records.
+                    filesArray.push({ "file": i, "reportDate": reportDate, "reportBIN": reportBIN, "recordCount": recordCount, "records": detailRecords }); // Create reformatted report as object.
+                    output(); // Call function to display report detail records
+                })
+                reader.onerror = (function(event) {
+                    reader.abort();
+                    error = `There was an error reading ${files[i].name}!`;
+                    errorHandler();
+                    return;
+                })
+                reader.readAsText(files[i]);
+            }
+        }
+
+        function processRecords(x, y) {
+            let count = x;
+            let data = y;
+            let records = [];
+            for (let j = count; j > 0; j--) {
+                let recordTemp = "";
+                let startOffset = (data.search(/\n\s{17}\d{7}\s/g)) + 1; // Find record start with pattern: line feed, 17 spaces, then 7 digits. +1 to skip line feed giving true start of record.
+                recordTemp = recordTemp.concat(data.substr(startOffset + 17, 7) + ','); // Add TRN CD
+                recordTemp = recordTemp.concat(data.substr(startOffset + 25, 15) + ',').trim(); // Add DESCRIPTION
+                recordTemp = recordTemp.concat(data.substr(startOffset + 41, 4) + ','); // Add DATE
+                recordTemp = recordTemp.concat(data.substr(startOffset + 55, 6) + ',').trim(); // Add AMOUNT 1
+                recordTemp = recordTemp.concat(data.substr(startOffset + 189, 6) + ',').trim(); // Add AMOUNT 2
+                recordTemp = recordTemp.concat(data.substr(startOffset + 62, 3) + ','); // Add CUR code 1
+                recordTemp = recordTemp.concat(data.substr(startOffset + 196, 3) + ','); // Add CUR code 2
+                recordTemp = recordTemp.concat(data.substr(startOffset + 66, 4) + ','); // Add CODE
+                recordTemp = recordTemp.concat(data.substr(startOffset + 73, 59)).trim(); // Add MERCHANT NAME/MESSAGE
+                records.push(recordTemp);
+            }
+            return records;
+        }
+
+        function output() {
+            let finalString = "TRN,DESCRIPTION,DATE,AMOUNT CURRNECY 1,AMOUNT CURRENCY 2,COUNTRY CODE 1,COUNTRY CODE 2,MERCHANT NAME/MESSAGE\n";
+            for (let k = 0; k < filesArray.length; k++) {
+                for (let l = 0; l < filesArray[k].records.length; l++) {
+                    finalString = finalString.concat(filesArray[k].records[l] + "\n");
+                }
+            }
+            document.getElementById("fileOutput").textContent = finalString; 
+        }
+
+        function errorHandler() {
+            document.getElementById("errors").innerHTML = '<p class="errorText">' + error + '</p>';
+            error = "";
+        }
+
+        // Attach event listeners to HTML elements
+        document.getElementById("filesSelect").addEventListener('change', fileList, false);
+        document.getElementById("filesProcess").onclick = function() {handleFiles()};
+
+    </script>
+</html>

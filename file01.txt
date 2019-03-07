@@ -1,0 +1,55 @@
+************************************************************************************************************************************
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+*** COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE  COVER PAGE       ***
+************************************************************************************************************************************
+
+ABC113R1                                YOURLINK MASTERS-CARDS EXCEPTION ITEMS REPORT      01/99/19            PAGE    33
+                                                  ABC PAYS PROC SOLUTIONS
+                                                     BIN 999999     DETAIL
+ 
+CARD NUMBER      TRN CD  DESCRIPTION     DATE   ISSUER AMOUNT CUR CODE   MERCHANT NAME/MESSAGE         CITY                 ST CTR X
+ RPS                     REF NUMBER             SOURCE AMOUNT                                      CAT CTGY
+ 
+                 1740781 MISC TRAN       0130           12.70 840 7808   INTERCHANGE ADJUSTMENT FOR : 01/29/19 1234560000000000000 N
+                                                        12.70 840
+ 
+                 1740782 MISC TRAN       0130           35.08 840 7808   INTERCHANGE ADJUSTMENT FOR : 01/29/19 9999990000000000000 N
+                                                        35.08 840
+ 
+                 1740783 MISC TRAN       0130            9.34 840 7808   INTERCHANGE ADJUSTMENT FOR : 01/29/19 6543210000000000000 N
+                                                         9.34 840
+ 
+
+
+ABC113R1                                YOURLINK MASTERS-CARDS EXCEPTION ITEMS REPORT      01/99/19            PAGE    34
+                                                  ABC PAYS PROC SOLUTIONS
+                                                     BIN 999999     DETAIL
+ 
+CARD NUMBER      TRN CD  DESCRIPTION     DATE   ISSUER AMOUNT CUR CODE   MERCHANT NAME/MESSAGE         CITY                 ST CTR X
+ RPS                     REF NUMBER             SOURCE AMOUNT                                      CAT CTGY
+ 
+                 1740784 MISC TRAN       0130           12.70 840 7808   INTERCHANGE ADJUSTMENT FOR : 01/29/19 1234560000000000000 N
+                                                        12.70 840
+ 
+                 1740785 MISC TRAN       0130           35.08 840 7808   INTERCHANGE ADJUSTMENT FOR : 01/29/19 9999990000000000000 N
+                                                        35.08 840
+ 
+                 1740786 MISC TRAN       0130            9.34 840 7808   INTERCHANGE ADJUSTMENT FOR : 01/29/19 6543210000000000000 N
+                                                         9.34 840
+ 
+************************************************************************************************************************************
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+*** TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE  TRAILER PAGE ***
+************************************************************************************************************************************
